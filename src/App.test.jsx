@@ -1,13 +1,15 @@
 import React from 'react';
-import App from '../src/components/App';
+import { shallow } from 'enzyme';
 import Enzyme from 'enzyme';
 import { mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import App from './App';
+
 Enzyme.configure({ adapter: new Adapter() });
 
 describe('App', () => {
   test('should render', () => {
-    const app = mount(<App />);
-    expect(app.text()).toContain('Hello World!');
+    const wrapper = shallow(<App />);
+    expect(wrapper).toMatchSnapshot();
   });
 });

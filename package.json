@@ -22,18 +22,20 @@
   },
   "homepage": "https://github.com/vikpe/react-webpack-babel-starter",
   "scripts": {
-    "build": "yarn run clean-dist && webpack -p --config=configs/webpack/prod",
+    "build": "npm run clean-dist && webpack -p --config=configs/webpack/prod",
     "clean-dist": "rimraf dist/*",
     "prettier-write": "prettier --write \"{src,tests}/**/*.{js,jsx,css,scss}\"",
     "prettier-check": "prettier --list-different \"{src,tests}/**/*.{js,jsx,css,scss}\"",
-    "start": "yarn run start-dev",
+    "start": "npm run start-dev",
     "start-dev": "webpack-dev-server --config=configs/webpack/dev",
-    "start-prod": "yarn run build && node express.js",
-    "test": "jest --watchAll --coverage --config=configs/jest.json"
+    "start-prod": "npm run build && node express.js",
+    "test": "jest --watchAll --config=configs/jest.json --silent"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.0",
     "@babel/core": "^7.7.2",
+    "@babel/plugin-proposal-optional-chaining": "^7.7.4",
+    "@babel/plugin-transform-runtime": "^7.7.4",
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
     "babel-core": "^7.0.0-bridge.0",
@@ -41,6 +43,7 @@
     "babel-loader": "^8.0.6",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "create-react-component-folder": "^0.1.30",
     "css-loader": "^3.2.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
@@ -66,6 +69,23 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "express": "^4.17.1"
-  }
+    "@babel/runtime": "^7.7.4",
+    "@material-ui/core": "^4.7.0",
+    "@material-ui/icons": "^4.5.1",
+    "@reach/router": "^1.2.1",
+    "axios": "^0.19.0",
+    "express": "^4.17.1",
+    "formik": "^2.0.6",
+    "immutable": "^4.0.0-rc.12",
+    "lodash": "^4.17.15",
+    "yup": "^0.27.0"
+  },
+  "crcf": [
+    "scss",
+    "createindex",
+    "uppercase",
+    "jsx",
+    "cssmodules",
+    "spec"
+  ]
 }
