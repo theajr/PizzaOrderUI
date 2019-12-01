@@ -26,9 +26,9 @@
     "clean-dist": "rimraf dist/*",
     "prettier-write": "prettier --write \"{src,tests}/**/*.{js,jsx,css,scss}\"",
     "prettier-check": "prettier --list-different \"{src,tests}/**/*.{js,jsx,css,scss}\"",
-    "start": "npm run start-dev",
+    "dev": "npm run start-dev",
     "start-dev": "webpack-dev-server --config=configs/webpack/dev",
-    "start-prod": "npm run build && node express.js",
+    "start": "npm run build && node express.js",
     "test": "jest --watchAll --config=configs/jest.json --silent"
   },
   "devDependencies": {
