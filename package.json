@@ -59,7 +59,6 @@
     "react-hot-loader": "^4.12.17",
     "react-router-dom": "^5.1.2",
     "react-test-renderer": "^16.11.0",
-    "rimraf": "^3.0.0",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
     "webpack": "^4.41.2",
@@ -69,6 +68,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "rimraf": "^3.0.0",
     "@babel/runtime": "^7.7.4",
     "@material-ui/core": "^4.7.0",
     "@material-ui/icons": "^4.5.1",
