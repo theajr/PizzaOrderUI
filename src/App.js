@@ -198,13 +198,6 @@ const App = () => {
 
   return (
     <Provider value={{ state, dispatch }}>
-      <Button
-        onClick={() => {
-          toggleShowData(!showData);
-        }}
-      >
-        Close
-      </Button>
       <Layout>
         <Router>
           <LandingPage path="/" />
@@ -214,25 +207,8 @@ const App = () => {
           <SignUpForm path="/signup" />
         </Router>
       </Layout>
-      <Drawer
-        open={showData}
-        anchor="bottom"
-        onClose={toggleDrawer(false)}
-        variant="persistent"
-      >
-        <Button
-          onClick={() => {
-            toggleShowData(!showData);
-          }}
-        >
-          Close
-        </Button>
-        <div style={{ maxHeight: 300, overflow: 'scroll' }}>
-          <pre>{JSON.stringify(state, null, 2)}</pre>
-        </div>
-      </Drawer>
-      <Modal />
 
+      <Modal />
       <Messages />
     </Provider>
   );
