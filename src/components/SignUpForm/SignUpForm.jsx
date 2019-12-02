@@ -40,7 +40,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   dp: {
-    backgroundImage: `url(${avatar})`,
     backgroundPosition: ' center center',
     backgroundSize: '100%',
     backgroundRepeat: 'no-repeat',
@@ -51,6 +50,9 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
     alignItems: 'center',
     justifyContent: 'center',
+    [theme.breakpoints.up('md')]: {
+      maxWidth: 300,
+    },
   },
 }));
 
@@ -126,7 +128,10 @@ const SignUpForm = props => {
                     flexWrap: 'wrap',
                   }}
                 >
-                  <div className={classes.dp}>
+                  <div
+                    className={classes.dp}
+                    style={{ backgroundImage: `url(${avatar})` }}
+                  >
                     <img
                       src={avatar}
                       alt="Profile"
@@ -150,7 +155,7 @@ const SignUpForm = props => {
                       </IconButton>
                     </label>
                   </div>
-                  <div style={{ flexGrow: 1 }}>
+                  <div>
                     <TextField
                       id="first_name"
                       name="first_name"
