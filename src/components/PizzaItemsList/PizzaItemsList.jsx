@@ -39,7 +39,6 @@ const PizzaItemsList = props => {
   return (
     <Loader message="Fetching Pizzas for you.." show={fetching}>
       <div>
-        {filtered.length}
         {filtered.map(p => (
           <PizzaItem
             info={p}

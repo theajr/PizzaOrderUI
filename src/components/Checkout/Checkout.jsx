@@ -109,9 +109,12 @@ const Checkout = props => {
     <Loader message="Placing your order..." show={placingOrder}>
       <div className={classes.root}>
         <div className={classes.items}>
-          {!props.items.length && (
-            <h3 style={{ textAlign: 'center' }}>Ooops, Your cart is empty!</h3>
-          )}
+          <h3 style={{ textAlign: 'center' }}>
+            {!props.items.length
+              ? 'Ooops, Your cart is empty!'
+              : 'Pizzas in your cart:'}
+          </h3>
+
           {props.items.map(p => (
             <PizzaItem info={p} key={p.id} cart={props.cart}></PizzaItem>
           ))}
