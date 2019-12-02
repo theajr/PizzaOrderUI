@@ -63,11 +63,11 @@ const SignUpForm = props => {
     'https://www.w3schools.com/howto/img_avatar.png',
   );
   const values = {
-    first_name: 'AJay Kumar',
-    last_name: 'Pathuri',
-    email: 'theajr@gmail.com',
-    confirmPassword: '12121212',
-    password: '12121212',
+    first_name: '',
+    last_name: '',
+    email: '',
+    confirmPassword: '',
+    password: '',
   };
   const [signingUp, setSigningUp] = useState(false);
   const [signedUP, setSignedUP] = useState(false);

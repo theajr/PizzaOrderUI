@@ -18,6 +18,7 @@ export const protectedComponent = Component => props => {
         setStay(true);
       })
       .catch(e => {
+        localStorage.removeItem('token');
         setStay(false);
       })
       .finally(() => {

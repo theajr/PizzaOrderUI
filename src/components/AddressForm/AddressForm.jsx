@@ -31,12 +31,12 @@ const AddressForm = props => {
   const [inProgress, setInProgress] = useState(false);
   const { onSuccessFullAddressAdd, onSuccess } = props;
   const values = {
-    street_address: 'Flat 202, Sri chethana men pg',
-    city: 'Hyderabad',
-    landmark: 'AXIS ATM',
-    state: 'Telanagana State',
-    country: 'India',
-    pincode: '502310',
+    street_address: '',
+    city: '',
+    landmark: '',
+    state: '',
+    country: '',
+    pincode: '',
   };
 
   return (

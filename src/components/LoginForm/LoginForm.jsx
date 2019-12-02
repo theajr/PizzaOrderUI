@@ -30,8 +30,8 @@ const LoginForm = props => {
   });
 
   const values = {
-    email: 'theajr@gmail.com',
-    password: '12121212',
+    email: '',
+    password: '',
     rememberMe: false,
   };
   if (props.auth.access_token)

@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://vast-castle-52132.herokuapp.com/api/auth',
-  // baseURL: 'http://localhost:8000/api/auth',
+  // baseURL: 'https://vast-castle-52132.herokuapp.com/api/auth',
+  baseURL: 'http://localhost:8000/api/auth',
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
