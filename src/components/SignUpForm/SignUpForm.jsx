@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
     backgroundRepeat: 'no-repeat',
     position: 'relative',
     overflow: 'hidden',
-    borderRadius: '50%',
+    borderRadius: '5%',
     display: 'flex',
     textAlign: 'center',
     alignItems: 'center',
@@ -125,7 +125,7 @@ const SignUpForm = props => {
                 <div
                   style={{
                     display: 'flex',
-                    flexWrap: 'wrap',
+                    // flexWrap: 'wrap',
                   }}
                 >
                   <div
@@ -155,7 +155,7 @@ const SignUpForm = props => {
                       </IconButton>
                     </label>
                   </div>
-                  <div>
+                  <div style={{ borderLeft: '10px solid transparent' }}>
                     <TextField
                       id="first_name"
                       name="first_name"
