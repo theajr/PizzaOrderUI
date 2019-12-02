@@ -50,7 +50,7 @@ const Profile = React.memo(props => {
             {profile.first_name}, {profile.last_name}
           </Typography>
           <Typography variant="caption" color="textSecondary" component="p">
-            Orders Placed so far: <b>{totalOrders} </b>
+            Orders Placed so far: <b>{totalOrders || profile.totalOrders} </b>
           </Typography>
         </CardContent>
       </Card>

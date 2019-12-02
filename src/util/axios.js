@@ -14,7 +14,31 @@ instance.interceptors.request.use(
     if (token && !config.url.endsWith('/login')) {
       config.headers['Authorization'] = 'Bearer ' + token;
     }
+
+    var css = document.createElement('style');
+    css.type = 'text/css';
+    css.id = 'loader-css';
+
+    var styles = 'body { cursor:wait; }';
+
+    if (css.styleSheet) css.styleSheet.cssText = styles;
+    else css.appendChild(document.createTextNode(styles));
+    document.getElementsByTagName('head')[0].appendChild(css);
+
     return config;
+  },
+  function(error) {
+    return Promise.reject(error);
+  },
+);
+
+instance.interceptors.response.use(
+  function(response) {
+    const loader = document.getElementById('loader-css');
+    if (loader) {
+      loader.remove();
+    }
+    return response;
   },
   function(error) {
     return Promise.reject(error);

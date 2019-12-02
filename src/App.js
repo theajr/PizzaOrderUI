@@ -65,6 +65,7 @@ const App = () => {
       }
       case Constants.LOGOUT: {
         localStorage.removeItem('pzzData');
+        localStorage.removeItem('token');
         debugger;
         return {};
       }
@@ -72,6 +73,14 @@ const App = () => {
         // debugger;
         let n = prev.set('auth', payload);
         return n.toObject();
+      }
+
+      case Constants.SET_PROFILE: {
+        const n = { ...state };
+        n.auth.profile = { ...n.auth.profile, ...payload };
+        debugger;
+        console.log(n);
+        return n;
       }
       case Constants.LOGIN_FAIL: {
         console.warn(payload);

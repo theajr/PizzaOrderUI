@@ -174,13 +174,6 @@ function PrimarySearchAppBar(props) {
       >
         Logout
       </MenuItem>
-
-      <MenuItem onClick={handleMenuClose} component={Link} to="/login">
-        Login
-      </MenuItem>
-      <MenuItem onClick={handleMenuClose} component={Link} to="/signup">
-        Singup
-      </MenuItem>
     </Menu>
   );
 
@@ -188,36 +181,41 @@ function PrimarySearchAppBar(props) {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
             OrderMyPizza
           </Typography>
           <div className={classes.grow} />
-          <IconButton
-            aria-label="show 17 new notifications"
-            color="inherit"
-            component={Link}
-            to="/dashboard/checkout"
-          >
-            <Badge badgeContent={props.cartCount} color="secondary">
-              <ShoppingCartOutlinedIcon />
-            </Badge>
-          </IconButton>
-          <IconButton
-            component={Link}
-            to="/dashboard"
-            aria-label="show 17 new notifications"
-            color="inherit"
-          >
-            <LocalPizzaOutlinedIcon />
-          </IconButton>
+          {loggedIn ? (
+            <>
+              <IconButton
+                aria-label="show 17 new notifications"
+                color="inherit"
+                component={Link}
+                to="/dashboard/checkout"
+              >
+                <Badge badgeContent={props.cartCount} color="secondary">
+                  <ShoppingCartOutlinedIcon />
+                </Badge>
+              </IconButton>
+              <IconButton
+                component={Link}
+                to="/dashboard"
+                aria-label="show 17 new notifications"
+                color="inherit"
+              >
+                <LocalPizzaOutlinedIcon />
+              </IconButton>
+            </>
+          ) : (
+            <>
+              <Button component={Link} to="/login" style={{ color: 'white' }}>
+                Login
+              </Button>
+              <Button component={Link} to="/signup" style={{ color: 'white' }}>
+                Signup
+              </Button>
+            </>
+          )}
           <div className={classes.sectionDesktop}>
             {!loggedIn && (
               <>
@@ -248,17 +246,19 @@ function PrimarySearchAppBar(props) {
               </>
             )}
           </div>
-          <div className={classes.sectionMobile}>
-            <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </div>
+          {loggedIn && (
+            <div className={classes.sectionMobile}>
+              <IconButton
+                aria-label="show more"
+                aria-controls={mobileMenuId}
+                aria-haspopup="true"
+                onClick={handleMobileMenuOpen}
+                color="inherit"
+              >
+                <MoreIcon />
+              </IconButton>
+            </div>
+          )}
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
@@ -269,7 +269,7 @@ function PrimarySearchAppBar(props) {
 
 const mapStateToProps = state => {
   return {
-    loggedIn: state?.auth?.access_token ? true : false,
+    loggedIn: localStorage.getItem('token'),
     token: state?.auth?.access_token,
     cartCount: Object.values(state.cart || {}).reduce(
       (total, qty) => total + qty,

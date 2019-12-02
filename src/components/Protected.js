@@ -3,9 +3,10 @@ import React, { useContext } from 'react';
 import { AppContext } from '../util/appContext';
 import axios from '../util/axios';
 import Loader from './Loader';
+import { SET_PROFILE } from '../util/constants';
 
 export const protectedComponent = Component => props => {
-  const { state } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
   const [stay, setStay] = React.useState(false);
   const [fetching, setFetching] = React.useState(true);
   React.useEffect(() => {
@@ -13,7 +14,7 @@ export const protectedComponent = Component => props => {
     axios
       .get('/user')
       .then(res => {
-        state.auth.profile = res;
+        dispatch({ type: SET_PROFILE, payload: res.data });
         setStay(true);
       })
       .catch(e => {
