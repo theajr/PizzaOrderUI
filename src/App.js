@@ -154,12 +154,11 @@ const App = () => {
       }
 
       case Constants.ADD_ADDRESS_SUCCESSFUL: {
-        debugger;
         let n = prev.updateIn(
           'auth.profile.addresses'.split('.'),
           (prev = []) => _.uniqBy([...prev, payload], 'id'),
         );
-        console.log('CHnage to ', n.toObject().auth.profile.addresses);
+
         return n.toObject();
       }
 

@@ -119,7 +119,7 @@ const Checkout = props => {
             <PizzaItem info={p} key={p.id} cart={props.cart}></PizzaItem>
           ))}
         </div>
-        {props.items.length && (
+        {props.items.length > 0 && (
           <div style={{ textAlign: 'center' }}>
             <h3>Total: {amount.toFixed(2)}</h3>
             {!loadingAdresses ? (

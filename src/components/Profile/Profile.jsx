@@ -20,6 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
   root: {
     display: 'flex',
+    alignItems: 'flex-start',
     justifyContent: 'space-around',
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
