@@ -53,7 +53,7 @@ const PizzaItem = props => {
                 {info.title}
               </Typography>
               <Typography variant="body1" color="textPrimary" component="p">
-                <b style={{ fontSize: '18px' }}> ${info.price}</b>{' '}
+                <b style={{ fontSize: '18px' }}> ${info.price.toFixed(2)}</b>{' '}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
                 {info.description}
