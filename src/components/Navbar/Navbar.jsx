@@ -217,20 +217,6 @@ function PrimarySearchAppBar(props) {
             </>
           )}
           <div className={classes.sectionDesktop}>
-            {!loggedIn && (
-              <>
-                <Button component={Link} to="/login" style={{ color: 'white' }}>
-                  Login
-                </Button>
-                <Button
-                  component={Link}
-                  to="/signup"
-                  style={{ color: 'white' }}
-                >
-                  Signup
-                </Button>
-              </>
-            )}
             {loggedIn && (
               <>
                 <IconButton

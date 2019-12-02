@@ -1,5 +1,5 @@
 import Button from '@material-ui/core/Button';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 import { connect } from '../../util/appContext';
@@ -11,31 +11,41 @@ import {
 } from '../../util/constants';
 import PizzaItem from '../PizzaItem/PizzaItem';
 import Loader from '../Loader';
+import { useIntersection } from '../../util/intersectionObserver';
 
 const PizzaItemsList = props => {
   const { updateCartWithItem, cart, pizzas, appendToPizzas } = props;
   const [options, setOptions] = useState({ page: 1, limit: 20 });
   const [fetching, setFetching] = useState(false);
+  const { observerEntry, elRef } = useIntersection({ threshold: 0.5 });
+
+  const [noMoreResults, setNoMoreResults] = useState(false);
+
   useEffect(() => {
     setFetching(true);
+
     axios
       .get('/pizzas', { params: options })
       .then(res => {
         appendToPizzas(res.data);
+        if (res.data.length == 0) {
+          setNoMoreResults(true);
+        }
       })
       .catch(e => console.warn)
       .finally(() => {
         setFetching(false);
       });
-
     return () => {};
   }, []);
 
   let filtered = pizzas.filter(p => {
     return true;
   });
-  console.log('cart', props);
 
+  if (observerEntry.isIntersecting) {
+    console.log('OOOOO');
+  }
   return (
     <Loader message="Fetching Pizzas for you.." show={fetching}>
       <div>
@@ -47,6 +57,9 @@ const PizzaItemsList = props => {
             cart={props.cart}
           ></PizzaItem>
         ))}
+        <div className="sentinel" ref={elRef}>
+          Loading more..
+        </div>
       </div>
     </Loader>
   );

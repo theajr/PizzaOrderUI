@@ -1,52 +1,41 @@
-# React Webpack Babel Starter
-> Minimal starter with hot module replacement (HMR) for rapid development.
+## Pizza Order App
 
-* **[React](https://facebook.github.io/react/)** (16.x)
-* **[Webpack](https://webpack.js.org/)** (4.x)
-* **[Hot Module Replacement (HMR)](https://webpack.js.org/guides/hmr-react/)** using [React Hot Loader](https://github.com/gaearon/react-hot-loader) (4.x)
-* **[Babel](http://babeljs.io/)** (7.x)
-* [SASS](http://sass-lang.com/)
-* [Jest](https://facebook.github.io/jest/) - Testing framework for React applications
-* Image loading/minification using [Image Webpack Loader](https://github.com/tcoopman/image-webpack-loader)
-* Code formatting using [Prettier](https://github.com/prettier/prettier).
+### What's done so far
 
-## Installation
-1. Clone/download repo
-2. `yarn install` (or `npm install` for npm)
+- [x] Login
+- [x] Signup
+- [x] Profile View
+- [x] Available Pizzas menu display
+- [x] Add addresses
+- [x] Delete address
+- [x] Cart functionality
+- [x] Place Order
+- [x] Order history view
+- [x] Signout
 
-## Usage
-**Development**
+### What could be done more(If had enough time :-P)
 
-`yarn run start-dev`
+- [ ] Profile update Functionality
+- [ ] Address update Functionality
+- [ ] Progressive pagination to load pizzas menu and orders using `IntersectionObserver` or `natural (prev, next)` pagination
 
-* Build app continously (HMR enabled)
-* App served @ `http://localhost:8080`
+### Command to run locally
 
-**Production**
+```sh
+git clone https://github.com/theajr/PizzaOrderUI.git
+cd PizzaOrderUI
+npm install
+npm run dev # You are up at http://localhost:8080
+```
 
-`yarn run start-prod`
+### How did deploy to heroku
 
-* Build app once (HMR disabled) to `/dist/`
-* App served @ `http://localhost:3000`
-
-Note: change port number by setting the envrionment variable `PORT` 
-
----
-
-**All commands**
-
-Command | Description
---- | ---
-`yarn run start-dev` | Build app continously (HMR enabled) and serve @ `http://localhost:8080`
-`yarn run start-prod` | Build app once (HMR disabled) to `/dist/` @ `http://localhost:3000`
-`yarn run build` | Build app to `/dist/`
-`yarn run test` | Run tests
-`yarn run prettier-write` | Format code and write changes
-`yarn run prettier-check` | Prints the filenames of files that are different from Prettier formatting
-`yarn run start` | (alias of `yarn run start-dev`)
-
-**Note**: replace `yarn` with `npm` in `package.json` if you use npm.
-
-## See also
-* [React Webpack Typescript Starter](https://github.com/vikpe/react-webpack-typescript-starter)
-* [Isomorphic Webapp Starter](https://github.com/vikpe/isomorphic-webapp-starter)
+```sh
+heroku login # To loginto heroku using cli
+heroku create pizzaboy-theajr
+echo 'web:node express.js' > Procfile # to start serving website using express.js
+touch static.json # and added content to reroute all paths to index.html so that reach routes will be honored
+git add .
+git commit -m "about to deploy"
+git push heroku master # Viola, site is up!
+```
