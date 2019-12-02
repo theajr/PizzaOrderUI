@@ -102,7 +102,7 @@ const LoginForm = props => {
                   label="Password"
                   fullWidth
                   style={{ marginBottom: 10 }}
-                  // type='password'
+                  type="password"
                   value={password}
                   onChange={changeHandler}
                 />
