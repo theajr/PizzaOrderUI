@@ -116,7 +116,7 @@ const LoginForm = props => {
                         name="rememberMe"
                       />
                     }
-                    label="Primary"
+                    label="Remember me"
                   />
                 </FormGroup>
                 <Button
