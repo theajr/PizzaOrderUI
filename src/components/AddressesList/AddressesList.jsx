@@ -28,10 +28,7 @@ const AddressesList = props => {
           <h3>You haven't added a adress yet, Please add one.</h3>
         )}
         {addresses.map(address => (
-          <AddressItem
-            key={address.street_address}
-            info={address}
-          ></AddressItem>
+          <AddressItem key={address.id} info={address}></AddressItem>
         ))}
       </div>
     </Loader>

@@ -115,9 +115,10 @@ const App = () => {
         return n.toObject();
       }
       case Constants.UPDATE_PIZZA_RESULTS: {
-        let n = prev.updateIn(['pizzas'], prev =>
-          _.uniqBy([...prev, ...payload], 'id'),
-        );
+        let n = prev.updateIn(['pizzas'], prev => {
+          debugger;
+          return _.uniqBy([...prev, ...payload], 'id');
+        });
         return n.toObject();
       }
       case Constants.UPDATE_ITEM_IN_CART: {
@@ -161,14 +162,14 @@ const App = () => {
         return n.toObject();
       }
       case Constants.LOAD_MY_ORDERS: {
-        let n = prev.updateIn(['auth', 'profile', 'orders'], prev => {
+        let n = prev.updateIn(['auth', 'profile', 'orders'], (prev = []) => {
           return _.orderBy(
             _.uniqBy([...payload, ...prev], 'id'),
             ['created_at'],
             ['desc'],
           );
         });
-        debugger;
+
         console.log('n - ', n.toJSON());
         return n.toObject();
       }

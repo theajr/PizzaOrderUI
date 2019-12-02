@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import AddressForm from '../AddressForm/AddressForm';
 import { Collapse } from '@material-ui/core';
 import AddressesList from '../AddressesList/AddressesList';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -54,7 +55,14 @@ const Profile = React.memo(props => {
         </CardContent>
       </Card>
       <div>
-        <Button onClick={() => setAddAddress(true)}>Add New Address</Button>
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={() => setAddAddress(true)}
+          startIcon={<AddCircleOutlineIcon />}
+        >
+          Add New Address
+        </Button>
         {!addAdress && (
           <>
             {' '}

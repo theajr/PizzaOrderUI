@@ -1,8 +1,9 @@
-import { Redirect } from '@reach/router';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
+import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import CameraEnhanceOutlinedIcon from '@material-ui/icons/CameraEnhanceOutlined';
+import { Redirect } from '@reach/router';
 // import PropTypes from 'prop-types'
 import { Formik } from 'formik';
 import React, { useState } from 'react';
@@ -30,7 +31,31 @@ const validationSchema = Yup.object({
     .oneOf([Yup.ref('password')], 'Password does not match'),
 });
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    [theme.breakpoints.down('md')]: {
+      flexDirection: 'column',
+    },
+  },
+  dp: {
+    backgroundImage: `url(${avatar})`,
+    backgroundPosition: ' center center',
+    backgroundSize: '100%',
+    backgroundRepeat: 'no-repeat',
+    position: 'relative',
+    overflow: 'hidden',
+    borderRadius: '50%',
+    display: 'flex',
+    textAlign: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+}));
+
 const SignUpForm = props => {
+  const classes = useStyles();
   const { onSignUpSuccess, onSignUpFail } = props;
   const [avatar, setAvatar] = useState(
     'https://www.w3schools.com/howto/img_avatar.png',
@@ -72,8 +97,9 @@ const SignUpForm = props => {
                 setSignedUP(true);
               })
               .catch(e => {
-                alert(e.response?.data?.errors?.email);
-                // onSignUpFail({ errors: e.response.data.errors });
+                alert(
+                  'Something went wrong.. Please try again with a different email',
+                );
               })
               .finally(() => setSigningUp(false));
           };
@@ -81,11 +107,7 @@ const SignUpForm = props => {
             e.persist();
             if (e.target.name === 'avatar') {
               const files = Array.from(e.target.files);
-
-              // const formData = new FormData()
-
               files.forEach(async (file, i) => {
-                // formData.append(i, file)
                 const bas = await toBase64(file);
                 setAvatar(bas);
               });
@@ -95,23 +117,21 @@ const SignUpForm = props => {
             }
           };
           return (
-            <div style={{}}>
+            <div>
               <h3>Singup</h3>
               <form autoComplete="off" onSubmit={attemptSignUp}>
-                <div style={{ display: 'flex' }}>
-                  <div
-                    style={{
-                      backgroundImage: `url(${avatar})`,
-                      backgroundPosition: ' center center',
-                      backgroundSize: '100%',
-                      width: 300,
-                      backgroundRepeat: 'no-repeat',
-                      marginRight: 30,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
+                <div
+                  style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                  }}
+                >
+                  <div className={classes.dp}>
+                    <img
+                      src={avatar}
+                      alt="Profile"
+                      style={{ maxWidth: '100%', height: 'auto' }}
+                    />
                     <input
                       accept="image/*"
                       id="avatar"
@@ -120,7 +140,7 @@ const SignUpForm = props => {
                       name="avatar"
                       onChange={change.bind(null, 'avatar')}
                     />
-                    <label htmlFor="avatar">
+                    <label htmlFor="avatar" style={{ position: 'absolute' }}>
                       <IconButton
                         color="primary"
                         aria-label="upload picture"

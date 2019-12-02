@@ -121,7 +121,7 @@ function PrimarySearchAppBar(props) {
         component={Link}
         to="/dashboard/profile"
       >
-        Profile
+        Profiles
       </MenuItem>
       <MenuItem
         onClick={handleMenuClose}
@@ -173,6 +173,13 @@ function PrimarySearchAppBar(props) {
         }}
       >
         Logout
+      </MenuItem>
+
+      <MenuItem onClick={handleMenuClose} component={Link} to="/login">
+        Login
+      </MenuItem>
+      <MenuItem onClick={handleMenuClose} component={Link} to="/signup">
+        Singup
       </MenuItem>
     </Menu>
   );

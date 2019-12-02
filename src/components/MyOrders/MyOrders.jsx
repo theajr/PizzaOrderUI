@@ -25,7 +25,9 @@ const MyOrders = props => {
       <div>
         {!orders.length && <h3>You didn't place any orders, yet!</h3>}
         {!fetching &&
-          orders.map(order => <OrderSummary key={order.id} info={order} />)}
+          orders
+            .filter(order => order.address)
+            .map(order => <OrderSummary key={order.id} info={order} />)}
       </div>
     </Loader>
   );
